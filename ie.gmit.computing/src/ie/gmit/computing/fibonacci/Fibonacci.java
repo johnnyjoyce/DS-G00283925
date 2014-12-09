@@ -1,51 +1,46 @@
 package ie.gmit.computing.fibonacci;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.*;
 
-import javax.servlet.http.*;
-
-@SuppressWarnings("serial")
-public class Fibonacci extends HttpServlet {
- public void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws IOException {
-		resp.setContentType("text/plain");
-	
-		PrintWriter w = resp.getWriter();
+public class Fibonacci {
+		//Do fib computation here
+		 @SuppressWarnings("resource")
+		    public static void main(String args[]) {
+		 
+		        //input to print Fibonacci series upto how many numbers
+		        System.out.print("Enter number upto which Fibonacci series to print: ");
+		        int number = new Scanner(System.in).nextInt();
+		 
+		        System.out.println("\n\nFibonacci series upto " + number +" numbers : ");
+		        //printing Fibonacci series upto number
+		        for(int i=1; i<=number; i++){
+		            System.out.print(fibonacciRecusion(i) +" ");
+		        }
+		    } 
+		 
+		    // Java program for Fibonacci number using recursion.
+		    public static int fibonacciRecusion(int number){
+		        if(number == 1 || number == 2){
+		            return 1;
+		        }
+		 
+		        return fibonacciRecusion(number-1) + fibonacciRecusion(number -2); //tail recursion
+		    }
+		 
+		    // Java program for Fibonacci number using Loop.
+		    public static int fibonacciLoop(int number){
+		        if(number == 1 || number == 2){
+		            return 1;
+		        }
+		        int fibo1=1, fibo2=1, fibonacci=1;
+		        for(int i= 3; i<= number; i++){
+		            fibonacci = fibo1 + fibo2; //Fibonacci number is sum of previous two Fibonacci number
+		            fibo1 = fibo2;
+		            fibo2 = fibonacci;
+		 
+		        }
 		
-		String input = req.getParameter("input");
-		
-		if((input == null) || (input.length() == 0)){
-			w.println("{\"exception\":\"no input\"}");
-			return;
+		//use a string buffer
+		return fibonacci;
 		}
-		
-	    try
-	    {
-	      // the String to int conversion happens here
-	      int in = Integer.parseInt(input);
-	      int result = 0;
-	      
-	      if(in <= 1){
-	    	result = in;  
-	      }else{
-		      int[] fibs = new int[in + 1];
-		      
-		      fibs[0] = 0;
-		      fibs[1] = 1;
-
-		      for(int i = 2; i < in + 1; ++i){
-		    	  fibs[i] = fibs[i - 1] + fibs[i - 2];
-		      }
-	    	  result = fibs[in];
-	      }
-		    // print out the value after the conversion
-		    w.println("{\"result\":" + result + "}");
-	    }
-	    catch (NumberFormatException nfe)
-	    {
-	      w.println("{\"exception\":" + nfe.getMessage() + "}");
-	    }
-	    
-	}
 }
