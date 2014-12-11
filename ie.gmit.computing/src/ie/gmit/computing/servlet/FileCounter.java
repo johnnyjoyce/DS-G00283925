@@ -60,5 +60,4 @@ public class FileCounter extends HttpServlet {
       e.printStackTrace();
     }
   }
-
 } 
