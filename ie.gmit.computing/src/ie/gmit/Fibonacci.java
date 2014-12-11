@@ -1,4 +1,4 @@
-package ie.gmit.computing.fibonacci;
+package ie.gmit;
 
 import java.util.*;
 
