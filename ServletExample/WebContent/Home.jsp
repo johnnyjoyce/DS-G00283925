@@ -12,7 +12,7 @@
 			 Please enter the amount of numbers you wish to see: <br>
 			<%session.setAttribute("request-Type", "Add"); %>
 			Enter any number between 1-100: <br>
-			<input type="text" name="max"size="20px">
+			<input type="text" name="max" size="20px">
 			<input type="submit" value="submit">		
 		</form>		
 	</body>	

@@ -65,7 +65,7 @@ public class FileCounter extends HttpServlet {
 		  {
 			  RemoteFibonacci remote = (RemoteFibonacci)Naming.lookup("rmi://localhost:1099/fibo");
 			  System.out.println(request.getSession().getAttribute("max"));
-			  result = remote.getFibonacci(Integer.valueOf(String.valueOf(request.getSession().getAttribute("max"))));
+			  result = remote.getFibonacci(Integer.parseInt(request.getParameter("max")));
 			  System.out.println(result);
 			  request.setAttribute("result", result);
 		  }

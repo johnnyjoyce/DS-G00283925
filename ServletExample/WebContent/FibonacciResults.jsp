@@ -8,6 +8,7 @@
 </head>
 <body>
 		Result<br>
+		<label>Fibonacci Sequence - ${ result }</label>
 		<%=request.getParameter("result") %>
 		<form action="Home.jsp">
 		<input type="submit" value="Return To Start">
