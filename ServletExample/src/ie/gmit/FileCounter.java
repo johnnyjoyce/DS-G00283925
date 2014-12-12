@@ -3,9 +3,7 @@ package ie.gmit;
 import ie.gmit.servlet.FileDao;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.rmi.Naming;
-import java.rmi.NotBoundException;
 import java.rmi.registry.LocateRegistry;
 
 import javax.servlet.ServletException;
@@ -13,7 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
 
 /**
  * Servlet implementation class FileCounter
@@ -45,8 +43,7 @@ public class FileCounter extends HttpServlet {
     }
   }
   
-  public void doGet(HttpServletRequest request,
-      HttpServletResponse response) throws ServletException, IOException 
+  public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
   { 
 	  String rType = request.getParameter("request-Type");
 	  System.out.println(rType);
@@ -86,12 +83,12 @@ public class FileCounter extends HttpServlet {
 		  {
 			  e.getMessage();
 		  }
-		  request.getRequestDispatcher("FibonacciResults.jsp?result=" + result).forward(request, response);
-	  	}
+		  request.getRequestDispatcher("FibonacciResults.jsp").forward(request, response);
+		  }
 	 }
 	  protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException
 	  {
-		 doGet(req, resp); 
+		 doGet(req, resp);
 	  }
 	  
 	  public void destroy()

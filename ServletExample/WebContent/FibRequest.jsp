@@ -11,13 +11,14 @@
 <form action="FileCounter">
 <label>Fibonacci Request</label><br>
 
+	<%session.setAttribute("request-Type", "poll"); %>
 	<label> Job Number - ${ jobNum }</label></br>
 	<label> Page will refresh in 10 seconds</label>
 	<label> Timer - <%request.getAttribute("timer"); %></label>
 	
 	<%
 	request.getSession().setAttribute("max", request.getParameter("max"));
-	response.addHeader("refresh", "10;http://localhost:8080/fileCounter/FileCounter?request-Type=poll&jobNum=" + request.getSession().getAttribute("jobNum"));
+	response.addHeader("refresh", "10;http://localhost:8080/filecounter/FileCounter?request-Type=poll&jobNum=" + request.getSession().getAttribute("jobNum"));
 	%>
 
 		</form>
