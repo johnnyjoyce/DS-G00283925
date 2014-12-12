@@ -45,14 +45,15 @@ public class FileCounter extends HttpServlet {
   
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
   { 
-	  String rType = request.getParameter("request-Type");
+	  String rType = request.getSession().getAttribute("request-Type").toString();
 	  System.out.println(rType);
 	  
 	  if(rType.equals("Add"))
 	  {
+		  System.out.println("Add");
 		  String jobNum = "";
 		  jobNum += fs.add(Integer.parseInt(request.getParameter("max")));
-		  request.setAttribute("jobNum", jobNum);
+		  request.getSession().setAttribute("jobNum", jobNum);
 		  request.getRequestDispatcher("FibRequest.jsp").forward(request, response);
 	  }
 	  else if(rType.equals("poll"))

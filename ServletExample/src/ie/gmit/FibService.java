@@ -9,8 +9,6 @@ public class FibService {
 	private LinkedList <FibRequest> inqueue = new LinkedList<FibRequest>();
 	private Map <Integer, String> outqueue = new HashMap<Integer, String>();
 	
-	
-	
 	public String getResult(int jobNumber){
 		if(outqueue.containsKey(jobNumber))
 		{
